@@ -16,7 +16,7 @@ public class OpenApiConfiguration {
 	  public OpenAPI openAPI() {
 	    String host = System.getenv("HOST");
 	    Info info = new Info().title("CE IDP Sample Service API Documentation").version("v1")
-	            .description("Skillset Navigator Backend Service")
+	            .description("CE IDP Sample Service")
 	            .termsOfService(host)
 	            .contact(new Contact().name("Cient Engineering").email(""))
 	            .license(new License().name("Apache License Version 2.0").url("http://www.apache.org/licenses/LICENSE-2.0"));

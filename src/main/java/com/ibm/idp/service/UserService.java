@@ -2,6 +2,8 @@ package com.ibm.idp.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import com.ibm.idp.domain.UserEntity;
 import com.ibm.idp.repository.UserRepository;
 
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
@@ -29,7 +32,7 @@ public class UserService {
     
     public List<UserEntity> getUsersByTeamName(String teamname) {
         try {
-            return userRepo.findByTeamName(teamname);
+            return userRepo.findByTeam(teamname);
         } catch( Exception e) {
            //TODO
             e.printStackTrace();
@@ -58,7 +61,7 @@ public class UserService {
     }
     
     public UserEntity updateUser(UserEntity user) {
-        UserEntity update = new UserEntity(user.getName(), user.getUid(), user.getEmail(), user.getManagerSerialNumber(), user.getJob(),
+        UserEntity update = new UserEntity(user.getUsername(), user.getId(), user.getEmail(), user.getManagerSerialNumber(), user.getJob(),
                 user.getIsManager(), user.getTeam());
         
         try {
@@ -70,6 +73,7 @@ public class UserService {
         }
     }
     
+   
     public void deleteUseByEmail(String email) {
         userRepo.deleteByEmail(email);
     }

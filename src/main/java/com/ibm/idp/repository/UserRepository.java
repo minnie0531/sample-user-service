@@ -10,7 +10,7 @@ import com.ibm.idp.domain.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
     
-    public List<UserEntity> findByTeamName(String teamname);
+    public List<UserEntity> findByTeam(String team);
     
     public UserEntity findByEmail(String email);
     
